@@ -9,10 +9,6 @@ class CurrentWeatherSerializer(serializers.Serializer):
     local_time = serializers.CharField()
 
 def validate_date_format(value):
-    # try:
-    #     dt = datetime.strptime(value, "%d.%m.%Y").date()
-    # except ValueError:
-    #     raise serializers.ValidationError("Дата должна быть в формате dd.MM.yyyy")
     today = timezone.now().date()
     max_date = today + timedelta(days=10)
     if value < today:
